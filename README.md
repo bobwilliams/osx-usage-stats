@@ -11,7 +11,7 @@ Personal OS X Usage Metrics
 ## Overview
 There are two primary components:
 
-* collectors - A monitoring services which listen for data or system metrics and insert data into TurbineDB.
+* collectors - Monitoring services which listen for data or system metrics and insert data into TurbineDB.
 * website - A simple web interface to query and visualize the data being collected.
 
 ## License
