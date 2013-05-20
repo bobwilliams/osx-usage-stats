@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title><%= title %></title>
+
+	<!-- Included CSS Files, use foundation.css if you do not want minified code -->
+	<link rel="stylesheet" href="stylesheets/foundation.min.css">
+	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="stylesheets/rickshaw/graph.css">
+	<link rel="stylesheet" href="stylesheets/rickshaw/detail.css">
+
+	<!-- Latest version of jQuery -->
+	<script src="javascripts/vendor/jquery.js"></script>
+	<!-- Included JS Files (Minified) -->
+	<script src="javascripts/foundation.min.js"></script>
+	<!-- Initialize JS Plugins -->
+	<script src="javascripts/app.js"></script>
+
+	<script src="javascripts/vendor/d3.min.js"></script> 
+	<script src="javascripts/vendor/d3.layout.min.js"></script> 
+	<script src="javascripts/rickshaw.min.js"></script> 
+</head>
+
+<body>
+
+	<nav class="top-bar">
+		<ul class="title-area">
+		<!-- Title Area -->
+		<li class="name">
+			<h1><a href="#"><%= title %></a></h1>
+		</li>
+	</nav>
+
+	<div class="row">
+		<div class="twelve columns">
+			Total averages for wired memory, active memory, inactive memory, used memory and free memory respectively 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="twelve columns">
+			<div class="panel radius">
+				
+				<div id="chart_container">
+			        <div id="chart"></div>
+				</div>
+				 
+				<script> 
+					var graph = new Rickshaw.Graph.Ajax({
+				        element: document.getElementById("chart"),
+				        width: document.getElementById("chart_container").offsetWidth,
+						height: 200,
+						renderer: 'bar', 
+				        dataURL: 'http://localhost:3000/memory',
+				        onComplete: function(transport) {
+		                		var graph = transport.graph;
+				                var detail = new Rickshaw.Graph.HoverDetail({ graph: graph });
+				        }
+					});
+				</script> 			
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="twelve columns">
+			<h6 class="subheader">
+				Big props to the Open Source projects used on this site.
+				<br>
+				<strong>
+					<a href="http://nodejs.org/">Node.js</a> | <a href="http://expressjs.com/">Express</a> | <a href="http://jquery.com/">jQuery</a> | <a href="http://foundation.zurb.com/">Foundation</a> | <a href="http://code.shutterstock.com/rickshaw/">Rickshaw</a>
+				</strong>
+			</h6> 
+		</div>
+		<hr/>
+		<div class="twelve columns">
+			<h6 class="subheader">Copyright (c) 2013 Bob Williams. All Rights Reserved.</h6>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+	"logging": {
+		"silent": false,
+		"level": "silly"
+	},
+	
+	"turbinedb": {
+		"host": "localhost",
+		"port": "8080",
+		"path": "/db/macbookair"
+	}
+}
