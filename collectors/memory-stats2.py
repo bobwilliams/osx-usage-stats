@@ -42,7 +42,7 @@ def getMemoryUsage():
 
 def postToTurbine(config,data=getMemoryUsage()):
 	turbine = config['turbine']
-	strange = "http://{0}:{1}/{2}".format(turbine['host'], turbine['port'], turbine['path'])
+	strange = "http://{0}:{1}/db/{2}/{3}".format(turbine['host'], turbine['port'], turbine['database'], turbine['collection'])
 	resp = requests.post(strange,simplejson.dumps(data)).text
 	print resp
 

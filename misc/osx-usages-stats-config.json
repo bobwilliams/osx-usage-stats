@@ -2,6 +2,7 @@
 	"turbine" : {
 		"host" : "localhost",
 		"port" : "8080",
-		"path": "db/usagestats/memory"
+		"database" : "usagestats",
+		"collection" : "memory"
 	}
 }
