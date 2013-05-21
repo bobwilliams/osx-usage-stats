@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.sparcedge.ws_monitor</string>
+    <string>com.sparcedge.memory-stats</string>
     <key>ProgramArguments</key>
     <array>
-    	<string>python</string>
-        <string>/Users/johndebovis/workspace/osx-usages-stats/collectors/memory_stats.py</string>
+    	<string>python2.5</string>
+        <string>/Users/johndebovis/workspace/osx-usages-stats/collectors/ws_monitor.py</string>
     </array>
     <key>StartInterval</key>
     <integer>10</integer>
@@ -17,8 +17,8 @@
     	<false/>
 	</dict>
     <key>StandardOutPath</key>
-    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys.log</string>
+    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys1.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys.err</string>
+    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys1.err</string>
 </dict>
 </plist>

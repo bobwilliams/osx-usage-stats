@@ -1,15 +1,16 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python2.5
 # encoding: utf-8
 
 from subprocess import Popen, PIPE
 import pprint,sys,simplejson,os,requests,time
 
+CONFIG_LOCATION = '/Users/johndebovis/workspace/osx-usages-stats/misc/osx-usages-stats-config.json'
+
 def localConfig():
 	# use default if need be
 	configName = 'misc/osx-usages-stats-config.json'
 	path = os.getcwd().split('/')[:-1]
-	configPath = '/Users/johndebovis/workspace/osx-usages-stats'
-	# configPath = '/'.join(path)
+	configPath = '/'.join(path)
 	configFilePath = "{0}/{1}".format(configPath,configName)
 	return configFilePath
 
@@ -40,15 +41,22 @@ def getMemoryUsage():
 	}
 	return data
 
-def postToTurbine(config,data=getMemoryUsage()):
+def postToTurbine(config):
 	turbine = config['turbine']
-	strange = "http://{0}:{1}/db/{2}/{3}".format(turbine['host'], turbine['port'], turbine['database'], turbine['collection'])
-	resp = requests.post(strange,simplejson.dumps(data)).text
-	print resp
+	memory = config['memory']
+	sleepInterval = int(config['sleepInterval'])
+	while True:
+		data = getMemoryUsage()
+		strange = "http://{0}:{1}/db/{2}/{3}".format(turbine['host'], turbine['port'], memory['database'], memory['collection'])
+		resp = requests.post(strange,simplejson.dumps(data)).text
+		print resp
+
+		#sleeeep
+		time.sleep(sleepInterval)
 
 if __name__ == '__main__':
 	
-	configLocation = sys.argv[1] if len(sys.argv) > 1 else localConfig()
-	config = loadCfg(configLocation)
-	postToTurbine(config)
+	# configLocation = sys.argv[1] if len(sys.argv) > 1 else localConfig()
+	config = loadCfg(CONFIG_LOCATION)
+	postToTurbine(config)	
 

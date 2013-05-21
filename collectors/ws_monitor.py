@@ -24,12 +24,7 @@ from functools import partial
 from datetime import datetime
 import time
 import urllib2
-
-try:
-    import json
-except ImportError:
-    import simplejson as json 
-
+import notify
 
 class BaseHandler(object):
     # pylint: disable-msg=C0111,R0903
@@ -154,49 +149,6 @@ def create_env_name(name):
     new_name = re.sub(r'_{2,}', '_', new_name)
     return new_name.upper().strip("_")
 
-def post_turbine(env):
-    """ posts our event data to turbinedb """
-
-    # boiler plate build for REST call    
-    url = 'http://localhost:8080/db/macbookair/nsworkspace'
-    headers = {"Content-Type": "application/json"}
-
-    # build data to pass
-    data = {}
-    data['timestamp'] = int(time.time()*1000)
-    nesteddata = {}
-    # loop through for nested data
-    for k in env:
-        nesteddata[k] = env[k]
-
-    data['data'] = nesteddata
-    data = json.dumps(data)
-
-    # echo the Request
-    print data
-
-    # build request
-    req = urllib2.Request(url, data, headers)
-
-    # make the call
-    try: 
-         f = urllib2.urlopen(req)
-    except urllib2.HTTPError, e:
-        logging.error('HTTPError = ' + str(e.code))
-    except urllib2.URLError, e:
-        logging.error('URLError = ' + str(e.reason))
-    except httplib.HTTPException, e:
-        logging.error('HTTPException')
-    except Exception:
-        import traceback
-        logging.error('generic exception: ' + traceback.format_exc())
-
-    res = f.read()
-    f.close()
-
-    # echo the response
-    print res 
-
 def log_event(notification, context=None, **kwargs):
     """Executes a shell command with logging"""
 
@@ -215,11 +167,10 @@ def log_event(notification, context=None, **kwargs):
         for k, v in user_info.items():
             child_env[create_env_name(k)] = str(v)
 
-    try:
-        post_turbine(child_env)
-    except Exception:
-        import traceback
-        logging.error('generic exception in posting to turbine: ' + traceback.format_exc())
+    """
+        Call our changes
+    """
+    notify.post(child_env)
 
 if __name__ == '__main__':
     main()
