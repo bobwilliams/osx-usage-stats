@@ -1,5 +1,5 @@
-Personal OS X Usage Metrics
----------------------------
+OS X Usage Metrics
+------------------
 
 ## Requirements
 * [TurbineDB](http://www.turbinedb.com) -- [install instructions](https://github.com/gilbertw1/turbine-db)
