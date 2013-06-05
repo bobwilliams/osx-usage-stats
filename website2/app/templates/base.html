@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{% block head %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='jquery.url.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='jquery.tablesorter.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='highcharts.js') }} "></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='date.format.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='loadIt.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='sylvester.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='polynomial.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='set.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='financialMath.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='base64.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='bootstrap-dropdown.js') }} "></script>
+<script language="javascript" type="text/javascript" src=" {{ url_for('static',filename='bootstrap-tab.js') }} "></script>
+
+
+<link rel="stylesheet" type="text/css" media="screen" href="https://raw.github.com/jquery/jquery-ui/master/themes/base/jquery.ui.button.css">
+<link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='styles.css')}}">
+<link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='sparc-bootstrap.css')}}"> 
+<link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='bootstrap-responsive.css')}}"> 
+<link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css">
+
+<script type="text/javascript">
+
+</script>
+
+<title>{% block title %}{% endblock %}</title>
+{% endblock %}
+</head>
+<body class="darkNav">
+	<div class="container" style="padding:50px">
+		{% block nav %}
+		<div class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="navbar-inner">
+	        <div class="container">
+	          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </a>
+	          <div class="nav-collapse collapse">
+	            <ul class="nav">
+	              <li class="home"><a href="/">Home</a></li>
+			      
+	              <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">SparcD<b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                  <li><a href="/sparcd/engagementHtml">Engagement</a></li>
+	                  <li><a href="/semantics">Semantics</a></li>
+	                  <li><a href="/semantics/civ">Civility</a></li>
+	                  <li><a href="/cliques/influenceHtml">Influence Groups</a></li>
+	                  <li><a href="/semantics/namedEntity">Named Entities</a></li>
+	                  <li><a href="/semantics/vents">Vents</a></li>
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">SparcIN<b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                   <li><a href="http://sim.sparcloud.net/similarityDemo">Similarity</a></li>
+			      		<li><a href="http://sim.sparcloud.net/compareDemo">String Comparison</a></li>
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sparc 520<b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                   <li class="520"><a href="/520">Apis</a></li>
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sparc Sales<b class="caret"></b></a>
+	                <ul class="dropdown-menu">
+	                   <li class="sales"><a href="/sales">Sales Map</a></li>
+	                </ul>
+	              </li>
+	            </ul>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+		{% endblock %}
+		<img src="{{ url_for('static',filename='sparciq-logo.png')}}" class="logo" alt="SPARCIQ" />
+		<div style="height:25px"></div> 
+		{% block content %}{% endblock %}
+		
+		<div id="footer">
+			<p>Copyright &copy; SPARC, LLC. All Rights Reserved.</p>
+		</div>
+	</div>
+		
+	{% block script %}
+		
+	{% endblock %}
+</body>

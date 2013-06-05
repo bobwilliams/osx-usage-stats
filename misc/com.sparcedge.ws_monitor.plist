@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.sparcedge.memory-stats</string>
+    <string>com.sparcedge.ws_monitor</string>
     <key>ProgramArguments</key>
     <array>
     	<string>python2.5</string>
@@ -14,11 +14,11 @@
     <key>KeepAlive</key>
 	<dict>
     	<key>SuccessfulExit</key>
-    	<false/>
+    	<true/>
 	</dict>
     <key>StandardOutPath</key>
-    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys1.log</string>
+    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/ws_monitor.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys1.err</string>
+    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/ws_monitor.err</string>
 </dict>
 </plist>

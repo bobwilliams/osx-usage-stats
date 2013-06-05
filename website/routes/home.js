@@ -3,7 +3,8 @@
  * @author Bob Williams <bobwilliams.ii@gmail.com>
  */
 
-var http = require('http');
+var http = require('http'),
+	querystring = require('querystring');
 
 module.exports = function(app){
 
@@ -16,18 +17,44 @@ module.exports = function(app){
 	// /memory
 	app.get('/memory', function(req, res){
 
-		var query = '{"reduce" : [ {"avg-wired" : {"avg": "MEM_WIRED"}} , {"avg-active" : {"avg": "MEM_ACTIVE"}}, {"avg-inactive" : {"avg": "MEM_INACTIVE"}}, {"avg-used" : {"avg": "MEM_USED"}}, {"avg-free" : {"avg": "MEM_FREE"}} ]}';
-		// var query = '{"group":[{"duration":"minute"}],"reduce":[{"avg-free":{"avg":"MEM_FREE"}}]}';
+		var query = 
+			{ 	"reduce" : [ 
+					{"avg-wired" : 
+						{"avg": "MEM_WIRED"} 
+					}, 
+					{"avg-active" : 
+						{"avg": "MEM_ACTIVE"} 
+					}, 
+					{"avg-inactive" : 
+						{"avg": "MEM_INACTIVE"}
+					}, 
+					{"avg-used" : 
+						{"avg": "MEM_USED"}
+					}, 
+					{"avg-free" : 
+						{"avg": "MEM_FREE"}
+					} 
+				]
+			};
+		
+
+		var query = '{"group":[{"duration":"minute"}],"reduce":[{"avg-free":{"avg":"MEM_FREE"}}]}';
 		
 		var options = {
 		    host : config.turbinedb.host,
 		    port : config.turbinedb.port,
-		    path : config.turbinedb.path + '/memory?q=' + encodeURIComponent(query), 
+		    path : config.turbinedb.path + '/memory?q=' + encodeURIComponent(query),
 		    method : 'GET' // do GET
+
 		};
 
+		console.log(options)
+
+
 		var req = http.request(options, function(response) {
+			
 		    response.on('data', function(chunk) {
+		    	console.log(chunk)
 		    	var data = JSON.parse(chunk)[0].data[0].data[0];
 		    	var retJson = [{"name": "Average Memory Totals", "data": 
 		    		[
@@ -38,7 +65,8 @@ module.exports = function(app){
 		    			{"x": 4, "y": data["avg-free"]},
 	    			]}];
 		        res.json(retJson);
-		    });		 
+		    });		
+		    // res.json({"ok": "ok"}) 
 		});
 		 
 		req.end();

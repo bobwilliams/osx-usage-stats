@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}SparcIQ Analytics{% endblock %}
+{% block head %}
+	{{ super() }}
+{% endblock %}
+{% block nav %}
+	{{ super() }}
+{% endblock%}
+{% block content %}
+		<h3> Welcome to <a href="http://www.sparciq.com/"> SparcIQ </a>Analytics.</h3>
+		<img src="{{ url_for('static',filename='sparciqSlogan.png')}}"> 
+<!-- 		<div style="height:25px"></div> -->
+		
+		<div id="data" class="data">
+		</div>
+		<div style="height:50px"></div>
+
+{% endblock %}
+{% block script %}
+	{{ super() }}
+{% endblock %}
