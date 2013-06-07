@@ -17,8 +17,8 @@
     	<false/>
 	</dict>
     <key>StandardOutPath</key>
-    <string>/Users/bob/workspace/osx-usage-stats/logs/sys.log</string>
+    <string>/Users/bob/workspace/osx-usage-stats/logs/memory_stats.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/bob/workspace/osx-usage-stats/logs/sys.err</string>
+    <string>/Users/bob/workspace/osx-usage-stats/logs/memory_stats.err</string>
 </dict>
 </plist>
