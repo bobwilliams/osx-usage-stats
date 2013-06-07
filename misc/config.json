@@ -1,0 +1,15 @@
+{
+	"turbine" : {
+		"host" : "localhost",
+		"port" : "8080"
+	},
+	"memory" : {
+		"database" : "usagestats",
+		"collection" : "memory"
+	},
+	"notification" : {
+		"database" : "usagestats",
+		"collection" : "wsnotification"
+	},
+	"sleepInterval" : 10
+}
