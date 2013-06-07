@@ -9,7 +9,7 @@
 	},
 	"notification" : {
 		"database" : "usagestats",
-		"collection" : "wsnotification"
+		"collection" : "nsworkspace"
 	},
 	"sleepInterval" : 10
 }
