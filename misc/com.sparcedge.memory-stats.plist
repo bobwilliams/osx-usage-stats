@@ -7,7 +7,7 @@
     <key>ProgramArguments</key>
     <array>
     	<string>python</string>
-        <string>/Users/johndebovis/workspace/osx-usages-stats/collectors/memory_stats.py</string>
+        <string>/Users/johndebovis/workspace/osx-usage-stats/collectors/memory_stats.py</string>
     </array>
     <key>StartInterval</key>
     <integer>10</integer>
@@ -17,8 +17,8 @@
     	<false/>
 	</dict>
     <key>StandardOutPath</key>
-    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys.log</string>
+    <string>/Users/johndebovis/workspace/osx-usage-stats/logs/sys.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/johndebovis/workspace/osx-usages-stats/logs/sys.err</string>
+    <string>/Users/johndebovis/workspace/osx-usage-stats/logs/sys.err</string>
 </dict>
 </plist>
