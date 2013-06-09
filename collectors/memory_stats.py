@@ -47,8 +47,8 @@ def postToTurbine(config):
 	sleepInterval = int(config['sleepInterval'])
 	while True:
 		data = getMemoryUsage()
-		strange = "http://{0}:{1}/db/{2}/{3}".format(turbine['host'], turbine['port'], memory['database'], memory['collection'])
-		resp = requests.post(strange,simplejson.dumps(data)).text
+		url = "http://{0}:{1}/db/{2}/{3}".format(turbine['host'], turbine['port'], memory['database'], memory['collection'])
+		resp = requests.post(url,simplejson.dumps(data)).text
 		print resp
 
 		#sleeeep
