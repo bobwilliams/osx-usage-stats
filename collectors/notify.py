@@ -58,7 +58,8 @@ def post_turbine(env):
     dataNew = json.dumps(data)
 
     # echo the Request
-    # print dataNew
+    print url
+    print dataNew
 
     # build request
     req = urllib2.Request(url, dataNew, headers)
