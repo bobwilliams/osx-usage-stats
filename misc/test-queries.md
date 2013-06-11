@@ -7,7 +7,6 @@ New wake notification event:
 
     http://localhost:8080/db/usagestats/nsworkspace -d '{"timestamp": 1364134494335, "data": {"NOTIFICATION_CONTEXT": "NSWorkspace Notification NSWorkspaceDidWakeNotification", "NOTIFICATION_KEY": "NSWorkspaceDidWakeNotification"}}''
 
-
 New reminders launch notification event:
 
     http://localhost:8080/db/usagestats/nsworkspace -d '{"timestamp": 1364135516840, "data": {"NSAPPLICATION_NAME": "Reminders", "NSAPPLICATION_PROCESS_SERIAL_NUMBER_HIGH": "0", "NSAPPLICATION_PROCESS_IDENTIFIER": "79648", "NSWORKSPACE_APPLICATION_KEY": "<NSRunningApplication: 0x7bba6910 (com.apple.reminders - 79648)>", "NOTIFICATION_KEY": "NSWorkspaceDidLaunchApplicationNotification", "NSAPPLICATION_BUNDLE_IDENTIFIER": "com.apple.reminders", "NSAPPLICATION_PROCESS_SERIAL_NUMBER_LOW": "19829480", "NSAPPLICATION_PATH": "/Applications/Reminders.app", "NOTIFICATION_CONTEXT": "NSWorkspace Notification NSWorkspaceDidLaunchApplicationNotification"}}''
