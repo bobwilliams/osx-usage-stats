@@ -32,11 +32,11 @@ def getMemoryUsage():
 	data = {
 			"timestamp" : 	int(round(time.time() * 1000)),
 			"data" : {
-				"MEM_WIRED" : 	PhysMem[0].split(':')[1].strip().split()[0][:-1],
-				"MEM_ACTIVE" :  PhysMem[1].lstrip().split()[0][:-1],
-				"MEM_INACTIVE": PhysMem[2].lstrip().split()[0][:-1],
-				"MEM_USED" : 	PhysMem[3].lstrip().split()[0][:-1],
-				"MEM_FREE" : 	PhysMem[4].lstrip().split()[0][:-1]
+				"MEM_WIRED" 	:	float(PhysMem[0].split(':')[1].strip().split()[0][:-1]),
+				"MEM_ACTIVE" 	: 	float(PhysMem[1].lstrip().split()[0][:-1]),
+				"MEM_INACTIVE"	:	float(PhysMem[2].lstrip().split()[0][:-1]),
+				"MEM_USED" 		:	float(PhysMem[3].lstrip().split()[0][:-1]),
+				"MEM_FREE" 		:	float(PhysMem[4].lstrip().split()[0][:-1])
 		}
 	}
 	return data
