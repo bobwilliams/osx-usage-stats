@@ -7,6 +7,6 @@
 	"turbinedb": {
 		"host": "localhost",
 		"port": "8080",
-		"path": "/db/macbookair"
+		"path": "/db/usagestats"
 	}
 }
