@@ -1,8 +1,8 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.7
 # encoding: utf-8
 
 from subprocess import Popen, PIPE
-import pprint,sys,simplejson,os,requests,time
+import pprint,sys,simplejson,os,requests,time,re
 
 CONFIG_LOCATION = '/Users/bob/workspace/osx-usage-stats/misc/config.json'
 
@@ -26,17 +26,47 @@ def loadCfg(configFileLocation):
 	return config
 
 def getMemoryUsage():
-	output = Popen(['top', '-l 1'], stdout=PIPE)
-	PhysMem = output.stdout.readlines()[6].strip('\n').split(',')
+	# http://apple.stackexchange.com/questions/4286/is-there-a-mac-os-x-terminal-version-of-the-free-command-in-linux-systems
+	
+	# Get process info
+	ps = Popen(['ps', '-caxm', '-orss,comm'], stdout=PIPE).communicate()[0]
+	vm = Popen(['vm_stat'], stdout=PIPE).communicate()[0]
+
+	# Iterate processes
+	processLines = ps.split('\n')
+	sep = re.compile('[\s]+')
+	rssTotal = 0 # kB
+	for row in range(1,len(processLines)):
+	    rowText = processLines[row].strip()
+	    rowElements = sep.split(rowText)
+	    try:
+	        rss = float(rowElements[0]) * 1024
+	    except:
+	        rss = 0 # ignore...
+	    rssTotal += rss
+
+	# Process vm_stat
+	vmLines = vm.split('\n')
+	sep = re.compile(':[\s]+')
+	vmStats = {}
+	for row in range(1,len(vmLines)-2):
+	    rowText = vmLines[row].strip()
+	    rowElements = sep.split(rowText)
+	    vmStats[(rowElements[0])] = int(rowElements[1].strip('\.')) * 4096
+
+	memWired = float(vmStats["Pages wired down"]/1024/1024)
+	memActive = float(vmStats["Pages active"]/1024/1024)
+	memInactive = float(vmStats["Pages inactive"]/1024/1024)
+	memFree = float(vmStats["Pages free"]/1024/1024)
 
 	data = {
 			"timestamp" : 	int(round(time.time() * 1000)),
 			"data" : {
-				"MEM_WIRED" 	:	float(PhysMem[0].split(':')[1].strip().split()[0][:-1]),
-				"MEM_ACTIVE" 	: 	float(PhysMem[1].lstrip().split()[0][:-1]),
-				"MEM_INACTIVE"	:	float(PhysMem[2].lstrip().split()[0][:-1]),
-				"MEM_USED" 		:	float(PhysMem[3].lstrip().split()[0][:-1]),
-				"MEM_FREE" 		:	float(PhysMem[4].lstrip().split()[0][:-1])
+				"MEM_WIRED" 		:	memWired,
+				"MEM_ACTIVE" 		: memActive,
+				"MEM_INACTIVE"	:	memInactive,
+				"MEM_USED" 			:	memWired + memActive + memInactive,
+				"MEM_FREE" 			:	memFree
 		}
 	}
 	return data
