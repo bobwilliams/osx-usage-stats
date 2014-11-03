@@ -1,4 +1,4 @@
-DIR_LOCATION='/Users/bob/workspace/osx-usage-stats'
+DIR_LOCATION=$(pwd)
 
 sudo chown root $DIR_LOCATION/misc/com.sparcedge.memory_stats.plist
 sudo launchctl unload $DIR_LOCATION/misc/com.sparcedge.memory_stats.plist
