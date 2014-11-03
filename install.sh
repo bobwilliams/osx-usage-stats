@@ -11,3 +11,4 @@ sudo launchctl unload $DIR_LOCATION/misc/com.sparcedge.ws_monitor.plist
 sudo launchctl load $DIR_LOCATION/misc/com.sparcedge.ws_monitor.plist
 sudo launchctl start com.sparcedge.ws_monitor
 sudo launchctl list | grep com.sparcedge.ws_monitor
+sudo pip install simplejson
