@@ -5,7 +5,7 @@ except ImportError:
 
 import time,urllib2,urllib,logging
 
-CONFIG_LOCATION = "/Users/bob/workspace/osx-usage-stats/misc/config.json"
+CONFIG_LOCATION = "../misc/config.json"
 
 
 def loadCfg(configFileLocation):

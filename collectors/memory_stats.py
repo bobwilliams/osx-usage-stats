@@ -4,7 +4,7 @@
 from subprocess import Popen, PIPE
 import pprint,sys,simplejson,os,requests,time,re
 
-CONFIG_LOCATION = '/Users/bob/workspace/osx-usage-stats/misc/config.json'
+CONFIG_LOCATION = '../misc/config.json'
 
 def localConfig():
 	# use default if need be
